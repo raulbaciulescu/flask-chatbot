@@ -1,0 +1,1132 @@
+Everyone you will ever meet knows something you don’t.
+
+[1]
+
+››
+
+T H E S TO RY
+
+of T H E F I E L D
+
+G U I D E
+
+Several years ago we created The Field Guide to Data Science because we wanted to help organizations of all types and sizes. There were countless industry and academic publications describing what Data Science is and why we should care, but very little information was available to explain how to make use of data as a resource. We find that situation to be just as true today as we did two years ago, when we created the first edition of the field guide.
+At Booz Allen Hamilton, we built an industry-leading team of Data Scientists. Over the course of hundreds of analytic challenges for countless clients, we’ve unraveled the DNA of Data Science. Many people have put forth their thoughts on single aspects of Data Science. We believe we can offer a broad perspective on the conceptual models, tradecraft, processes and culture of Data Science – the what, the why, the who and the how. Companies with strong Data Science teams often focus on a single class of problems – graph algorithms for social network analysis, and recommender models for online shopping are two notable examples. Booz Allen is different. In our role as consultants, we support a diverse set of government and commercial clients across a variety of domains. This allows us to uniquely understand the DNA of Data Science.
+Our goal in creating The Field Guide to Data Science was to capture what we have learned and to share it broadly. The field of Data Science has continued to advance since we first released the field guide. As a result, we decided to release this second edition, incorporating a few new and important concepts. We also added technical depth and richness that we believe practitioners will find useful.
+
+We want this effort to continue driving forward the science and art of Data Science.
+
+This field guide came from the passion our team feels for its work. It is not a textbook nor is it a superficial treatment. Senior leaders will walk away with a deeper understanding of the concepts at the heart of Data Science. Practitioners will add to their toolbox. We hope everyone will enjoy the journey.
+
+››
+
+W E A R E A L L A U T H O R S of T H I S S T O R Y
+We recognize that Data Science is a team sport. The Field Guide to Data Science provides Booz Allen Hamilton’s perspective on the complex and sometimes mysterious field of Data Science. We cannot capture all that is Data Science. Nor can we keep up - the pace at which this field progresses outdates work as fast as it is produced. As a result, we opened this field guide to the world as a living document to bend and grow with technology, expertise, and evolving techniques.
+
+Thank you to all the people that have emailed us your ideas as well as the 100+ people who have watched, starred, or forked our GitHub repository. We truly value the input of the community, as we work together to advance the science and art of Data Science. This is why we have included authors from outside Booz Allen Hamilton on this second edition of The Field Guide to Data Science.
+
+If you find the guide to be useful, neat, or even lacking, then we encourage you to add your expertise, including:
+
+›› ›› ›› ››
+Case studies from which you have learned
+
+Citations from journal articles or papers that inspire you
+
+Algorithms and techniques that you love
+
+Your thoughts and comments on other people’s additions
+
+Email us your ideas and perspectives at data_science@bah.com or submit them via a pull request on the GitHub repository.
+
+Join our conversation and take the journey with us. Tell us and the world what you know. Become an author of this story.
+
+››
+
+T H E O U T L I N E of O U R S T O R Y 12 ›› Meet Your Guides 17 ›› The Short Version – The Core Concepts of Data Science 18 ›› Start Here for the Basics – An Introduction to Data Science
+
+What Do We Mean by Data Science?
+
+How Does Data Science Actually Work?
+
+What Does It Take to Create a Data Science Capability?
+
+46 ›› Take off the Training Wheels – The Practitioner’s Guide to Data Science
+
+Guiding Principles
+
+The Importance of Reason
+
+Component Parts of Data Science
+
+Fractal Analytic Model
+
+The Analytic Selection Process
+Guide to Analytic Selection
+
+Detailed Table of Analytics
+
+84 ›› Life in the Trenches – Navigating Neck Deep in Data
+
+Going Deep into Machine Learning
+
+Feature Engineering
+
+Feature Selection
+
+Ensemble Models
+
+Data Veracity
+
+Application of Domain Knowledge
+
+The Curse of Dimensionality
+
+Model Validation
+
+102 ›› Putting it all Together – Our Case Studies
+
+Streamlining Medication Review
+
+Reducing Flight Delays
+
+Making Vaccines Safer
+
+Forecasting the Relative Risk for the Onset of
+
+Mass Killings to Help Prevent Future Atrocities
+
+Predicting Customer Response
+
+114 ›› Closing Time
+
+Parting Thoughts
+
+The Future of Data Science
+
+References
+
+About Booz Allen Hamilton
+
+››
+
+The S H O RT V E R S I O N
+
+›› Data Science is the art of turning data into actions. It’s all about the tradecraft. Tradecraft is the process, tools and technologies for humans and computers to work together to transform data into insights.
+
+›› Data Science tradecraft creates data products.
+Data products provide actionable information without exposing decision makers to the underlying data or analytics (e.g., buy/sell strategies for financial instruments, a set of actions to improve product yield, or steps to improve product marketing).
+
+›› Data Science supports and encourages shifting between deductive (hypothesis-based) and inductive (pattern- based) reasoning. This is a fundamental change from traditional analysis approaches. Inductive reasoning and exploratory data analysis provide a means to form or refine hypotheses and discover new analytic paths. Models of reality no longer need to be static. They are constantly tested, updated and improved until better models are found.
+
+›› Data Science is necessary for companies to stay with the
+pack and compete in the future. Organizations are constantly making decisions based on gut instinct, loudest voice and best argument – sometimes they are even informed by real information. The winners and the losers in the emerging data economy are going to be determined by their Data Science teams.
+
+›› Data Science capabilities can be built over time. Organizations mature through a series of stages – Collect, Describe, Discover, Predict, Advise – as they move from data deluge to full Data Science maturity. At each stage, they can tackle increasingly complex analytic goals with a wider breadth of analytic capabilities. However, organizations need not reach maximum Data Science maturity to achieve success. Significant gains can be found in every stage.
+
+›› Data Science is a different kind of team sport.
+Data Science teams need a broad view of the organization. Leaders must be key advocates who meet with stakeholders to ferret out the hardest challenges, locate the data, connect disparate parts of the business, and gain widespread buy-in.
+
+The Short Version
+
+17 17
+
+What do We Mean by Data Science?
+
+Describing Data Science is like trying to describe a sunset – it should be easy, but somehow capturing the words is impossible.
+
+T H E F I ELD G U I D E to D A T A S C I E N C E
+
+» Data Product
+
+A data product provides actionable information without exposing decision makers to the underlying data or analytics. Examples include:
+
+Movie Recommendations
+
+Weather Forecasts
+
+Stock Market Predictions
+
+Production Process
+
+Improvements
+
+Health Diagnosis
+
+Flu Trend Predictions
+
+Targeted Advertising
+
+Data Science Defined
+Data Science is the art of turning data into actions. This is accomplished through the creation of data products, which provide actionable information without exposing decision makers to the underlying data or analytics (e.g., buy/sell strategies for financial instruments, a set of actions to improve product yield, or steps to improve product marketing).
+
+Performing Data Science requires the extraction of timely, actionable information from diverse data sources to drive data products. Examples of data products include answers to questions such as: “Which of my products should I advertise more heavily to increase profit? How can I improve my compliance program, while reducing costs? What manufacturing process change will allow me to build a better product?” The key to answering these questions is: understand the data you have and what the data inductively tells you.
+
+Read this for additional background:
+The term Data Science appeared in the computer science literature throughout the 1960s-1980s. It was not until the late 1990s however, that the field as we describe it here, began to emerge from the statistics and data mining communities (e.g., [2] and [3]). Data Science was first introduced as an independent discipline in 2001.[4] Since that time, there have been countless articles advancing the discipline, culminating with Data Scientist being declared the sexiest job of the 21st century.[5]
+
+We established our first Data Science team at Booz Allen in 2010. It began as a natural extension of our Business Intelligence and cloud
+infrastructure development work. We saw the need for a new approach to distill value from our clients’ data. We approached the problem with a multidisciplinary team of computer scientists, mathematicians and domain experts. They immediately produced new insights and analysis paths, solidifying the validity of the approach. Since that time, our Data Science team has grown to 250 staff supporting dozens of clients across a variety of domains. This breadth of experience provides a unique perspective on the conceptual models, tradecraft, processes and culture of Data Science.
+
+Start Here for the Basics Start Here for the Basics
+
+21 21
+
+What is the Impact of Data Science?
+As we move into the data economy, Data Science is the competitive advantage for organizations interested in winning – in whatever way winning is defined. The manner in which the advantage is defined is through improved decision-making. A former colleague liked to describe data-informed decision making like this: If you have perfect information or zero information then your task is easy – it is in between those two extremes that the trouble begins. What he was highlighting is the stark reality that whether or not information is available, decisions must be made.
+
+The way organizations make decisions has been evolving for half a century. Before the introduction of Business Intelligence, the only options were gut instinct, loudest voice, and best argument. Sadly, this method still exists today, and in some pockets it is the predominant means by which the organization acts. Take our advice and never, ever work for such a company!
+Fortunately for our economy, most organizations began to inform their decisions with real information through the application of simple statistics. Those that did it well were rewarded; those that did not failed. We are outgrowing the ability of simple stats to keep pace with market demands, however. The rapid expansion of available data and the tools to access and make use of the data at scale are enabling fundamental changes to the way organizations make decisions.
+
+Data Science is required to maintain competitiveness in the increasingly data-rich environment. Much like the application of simple statistics, organizations that embrace Data Science will be rewarded while those that do not will be challenged to keep pace. As more complex, disparate datasets become available, the chasm between these groups will only continue to widen. The figure, The Business Impacts of Data Science, highlights the value awaiting organizations that embrace Data Science.
+T H E F I ELD G U I D E to D A T A S C I E N C E
+
+What is Different Now?
+
+For 20 years IT systems were built the same way. We separated the people who ran the business from the people who managed the infrastructure (and therefore saw data as simply another thing they had to manage). With the advent of new technologies and analytic techniques, this artificial – and highly ineffective – separation of critical skills is no longer necessary. For the first time, organizations can directly connect business decision makers to the data. This simple step transforms data from being ‘something to be managed’ into ‘something to be valued.’
+
+In the wake of the transformation, organizations face a stark choice: you can continue to build data silos and piece together disparate information or you can consolidate your data and distill answers.
+From the Data Science perspective, this is a false choice: The siloed approach is untenable when you consider the (a) the opportunity cost of not making maximum use of all available data to help an organization succeed, and (b) the resource and time costs of continuing down the same path with outdated processes. The tangible benefits of data products include:
+
+››
+
+››
+
+Opportunity Costs: Because Data Science is an emerging field, opportunity costs arise when a competitor implements and generates value from data before you. Failure to learn and account for changing customer demands will inevitably drive customers away from your current offerings. When competitors are able to successfully leverage Data Science to gain insights, they can drive differentiated customer value propositions and lead their industries as a result.
+Enhanced Processes: As a result of the increasingly interconnected world, huge amounts of data are being generated and stored every instant. Data Science can be used to transform data into insights that help improve existing processes. Operating costs can be driven down dramatically by effectively incorporating the complex interrelationships in data like never before. This results in better quality assurance, higher product yield and more effective operations.
+
+Start Here for the Basics Start Here for the Basics
+
+27 27
+
+How does Data Science Actually Work?
+
+It’s not rocket science… it’s something better - Data Science
+
+Let’s not kid ourselves - Data Science is a complex field. It is difficult, intellectually taxing work, which requires the sophisticated integration of talent, tools and techniques. But as a field guide, we need to cut through the complexity and provide a clear, yet effective way to understand this new world.
+To do this, we will transform the field of Data Science into a set of simplified activities as shown in the figure, The Four Key Activities of a Data Science Endeavor. Data Science purists will likely disagree with this approach, but then again, they probably don’t need a field guide, sitting as they do in their ivory towers! In the real world, we need clear and simple operating models to help drive us forward.
+
+T H E F I ELD G U I D E to D A T A S C I E N C E
+
+Acquire
+
+All analysis starts with access to data, and for the Data Scientist this axiom holds true. But there are some significant differences – particularly with respect to the question of who stores, maintains and owns the data in an organization.
+But before we go there, lets look at what is changing. Traditionally, rigid data silos artificially define the data to be acquired. Stated another way, the silos create a filter that lets in a very small amount of data and ignores the rest. These filtered processes give us an artificial view of the world based on the ‘surviving data,’ rather than one that shows full reality and meaning. Without a broad and expansive dataset, we can never immerse ourselves in the diversity of the data. We instead make decisions based on limited and constrained information.
+
+Eliminating the need for silos gives us access to all the data at once – including data from multiple outside sources. It embraces the reality that diversity is good and complexity is okay. This mindset creates a completely different way of thinking about data in an organization by giving it a new and differentiated role. Data represents a significant new profit and mission-enhancement opportunity for organizations.
+But as mentioned earlier, this first activity is heavily dependent upon the situation and circumstances. We can’t leave you with anything more than general guidance to help ensure maximum value:
+
+››
+
+››
+
+››
+
+››
+
+Look inside first: What data do you have current access to that you are not using? This is in large part the data being left behind by the filtering process, and may be incredibly valuable.
+
+Remove the format constraints: Stop limiting your data acquisition mindset to the realm of structured databases. Instead, think about unstructured and semi-structured data as viable sources.
+
+Figure out what’s missing: Ask yourself what data would make a big difference to your processes if you had access to it. Then go find it!
+
+Embrace diversity: Try to engage and connect to publicly available sources of data that may have relevance to your domain area.
+
+» Not All Data Is Created Equal
+As you begin to aggregate data, remember that not all data is created equally. Organizations have a tendency to collect any data that is available. Data that is nearby (readily accessible and easily obtained) may be cheap to collect, but there is no guarantee it is the right data to collect. Focus on the data with the highest ROI for your organization. Your Data Science team can help identify that data. Also remember that you need to strike a balance between the data that you need and the data that you have. Collecting huge volumes of data is useless and costly if it is not the data that you need.
+
+T H E F I ELD G U I D E to D A T A S C I E N C E
+
+Prepare
+
+Once you have the data, you need to prepare it for analysis.
+Organizations often make decisions based on inexact data. Data stovepipes mean that organizations may have blind spots. They are not able to see the whole picture and fail to look at their data and challenges holistically. The end result is that valuable information is withheld from decision makers. Research has shown almost 33% of decisions are made without good data or information. [10]
+
+When Data Scientists are able to explore and analyze all the data, new opportunities arise for analysis and data-driven decision making. The insights gained from these new opportunities will significantly change the course of action and decisions within an organization. Gaining access to an organization’s complete repository of data, however, requires preparation.
+Our experience shows time and time again that the best tool for Data Scientists to prepare for analysis is a lake – specifically, the Data Lake.[11] This is a new approach to collecting, storing and integrating data that helps organizations maximize the utility of their data. Instead of storing information in discrete data structures, the Data Lake consolidates an organization’s complete repository of data in a single, large view. It eliminates the expensive and cumbersome data-preparation process, known as Extract/Transform/Load (ETL), necessary with data silos. The entire body of information in the Data Lake is available for every inquiry – and all at once.
+
+Start Here for the Basics Start Here for the Basics
+
+31 31
+Data Scientists work across the spectrum of analytic goals – Describe, Discover, Predict and Advise. The maturity of an analytic capability determines the analytic goals encompassed. Many variables play key roles in determining the difficulty and suitability of each goal for an organization. Some of these variables are the size and budget of an organization and the type of data products needed by the decision makers. A detailed discussion on analytic maturity can be found in Data Science Maturity within an Organization.
+In addition to consuming the greatest effort, the Analyze activity is by far the most complex. The tradecraft of Data Science is an art. While we cannot teach you how to be an artist, we can share foundational tools and techniques that can help you be successful. The entirety of Take Off the Training Wheels is dedicated to sharing insights we have learned over time while serving countless clients. This includes descriptions of a Data Science product lifecycle and the Fractal Analytic Model (FAM). The Analytic Selection Process and accompanying Guide to Analytic Selection provide key insights into one of the most challenging tasks in all of Data Science – selecting the right technique for the job.
+
+Act
+
+Now that we have analyzed the data, it’s time to take action.
+The ability to make use of the analysis is critical. It is also very situational. Like the Acquire activity, the best we can hope for is to provide some guiding principles to help you frame the output for maximum impact. Here are some key points to keep in mind when presenting your results:
+
+1. The finding must make sense with relatively little up-front
+
+training or preparation on the part of the decision maker.
+
+2. The finding must make the most meaningful patterns, trends
+
+and exceptions easy to see and interpret.
+
+3. Every effort must be made to encode quantitative data
+
+accurately so the decision maker can accurately interpret and compare the data.
+
+4. The logic used to arrive at the finding must be clear and compelling as well as traceable back through the data.
+
+5. The findings must answer real business questions.
+
+Start Here for the Basics Start Here for the Basics
+
+33 33
+When organizations start out, they have Data Silos. At this stage, they have not carried out any broad Aggregate activities. They may not have a sense of all the data they have or the data they need. The decision to create a Data Science capability signals the transition into the Collect stage.
+
+All of your initial effort will be focused on identifying and aggregating data. Over time, you will have the data you need and a smaller proportion of your effort can focus on Collect. You can now begin to Describe your data. Note, however, that while the proportion of time spent on Collect goes down dramatically, it never goes away entirely. This is indicative of the four activities outlined earlier – you will continue to Aggregate and Prepare data as new analytic questions arise, additional data is needed and new data sources become available.
+Organizations continue to advance in maturity as they move through the stages from Describe to Advise. At each stage they can tackle increasingly complex analytic goals with a wider breadth of analytic capabilities. As described for Collect, each stage never goes away entirely. Instead, the proportion of time spent focused on it goes down and new, more mature activities begin. A brief description of each stage of maturity is shown in the table The Stages of Data Science Maturity.
+
+The Stages of Data Science Maturity
+
+Stage
+
+Description
+
+Example
+
+Collect
+
+Focuses on collecting internal or external datasets.
+
+Gathering sales records and corresponding weather data.
+
+Describe
+
+Seeks to enhance or reﬁne raw data as well as leverage basic analytic functions such as counts.
+
+How are my customers distributed with respect to location, namely zip code?
+
+Discover
+
+Identiﬁes hidden relationships or patterns.
+
+Are there groups within my regular customers that purchase similarly?
+
+Predict
+Utilizes past observations to predict future observations.
+
+Can we predict which products that certain customer groups are more likely to purchase?
+
+Advise
+
+Deﬁnes your possible decisions, optimizes over those decisions, and advises to use the decision that gives the best outcome.
+
+Your advice is to target advertise to speciﬁc groups for certain products to maximize revenue.
+
+Source: Booz Allen Hamilton
+
+T H E F I ELD G U I D E to D A T A S C I E N C E
+The maturity model provides a powerful tool for understanding and appreciating the maturity of a Data Science capability. Organizations need not reach maximum maturity to achieve success. Significant gains can be found in every stage. We believe strongly that one does not engage in a Data Science effort, however, unless it is intended to produce an output – that is, you have the intent to Advise. This means simply that each step forward in maturity drives you to the right in the model diagram. Moving to the right requires the correct processes, people, culture and operating model – a robust Data Science capability. What Does it Take to Create a Data Science Capability? addresses this topic.
+We have observed very few organizations actually operating at the highest levels of maturity, the Predict and Advise stages. The tradecraft of Discover is only now maturing to the point that organizations can focus on advanced Predict and Advise activities. This is the new frontier of Data Science. This is the space in which we will begin to understand how to close the cognitive gap between humans and computers. Organizations that reach Advise will be met with true insights and real competitive advantage.
+
+Start Here for the Basics Start Here for the Basics
+
+37 37
+
+» Where does your organization
+
+fall in analytic maturity?
+
+Take the quiz!
+
+1. How many data sources do
+
+you collect?
+
+a. Why do we need a bunch of data?
+
+– 0 points, end here.
+
+b. I don’t know the exact number.
+
+– 5 points
+
+c. We identiﬁed the required data and
+
+collect it. – 10 points
+
+2. Do you know what questions
+
+your Data Science team is trying to answer?
+
+a. Why do we need questions?
+
+0 points
+b. No, they ﬁgure it out for themselves.
+
+– 5 points
+
+c. Yes, we evaluated the questions that will have the largest impact to the business. – 10 points
+
+3. Do you know the important factors
+
+driving your business?
+
+a. I have no idea. – 0 points
+
+b. Our quants help me ﬁgure it out.
+
+– 5 points
+
+c. We have a data product for that.
+
+– 10 points
+
+4. Do you have an understanding of
+
+future conditions?
+
+a. I look at the current conditions and
+
+read the tea leaves. – 0 points
+
+b. We have a data product for that.
+
+– 5 points
+
+5. Do you know the best course of action to take for your key decisions?
+
+a. I look at the projections and plan a
+
+course. – 0 points
+
+b. We have a data product for that.
+
+– 5 points
+
+Check your score:
+
+0 – Data Silos, 5-10 – Collect, 10-20 – Describe, 20-30 – Discover, 30-35 – Predict, 35-40 - Advise
+
+Source: Booz Allen Hamilton
+
+» The Triple Threat Unicorn
+Individuals who are great at all three of the Data Science foundational technical skills are like unicorns – very rare and if you’re ever lucky enough to find one they should be treated carefully. When you manage these people:
+
+› Encourage them to lead your team, but not manage it. Don’t bog them down with responsibilities of management that could be done by other staff.
+
+› Put extra effort into managing
+
+their careers and interests within your organization. Build opportunities for promotion into your organization that allow them to focus on mentoring other Data Scientists and progressing the state of the art while also advancing their careers.
+
+› Make sure that they have the opportunity to present and spread their ideas in many different forums, but also be sensitive to their time.
+
+Understanding What Makes a Data Scientist
+Data Science often requires a significant investment of time across a variety of tasks. Hypotheses must be generated and data must be acquired, prepared, analyzed, and acted upon. Multiple techniques are often applied before one yields interesting results. If that seems daunting, it is because it is. Data Science is difficult, intellectually taxing work, which requires lots of talent: both tangible technical skills as well as the intangible “x-factors.”
+
+There are four independent yet comprehensive foundational Data Science competency clusters that, when considered together, convey the essence of what it means to be a successful Data Scientist. There are also reach back competencies that complement the foundational clusters but do not define the core tradecraft or attributes of the Data Science team.
+
+Data Science Competency Framework (see [13] for complete framework)
+
+Clusters
+
+Competencies
+
+Description
+
+Technical: “Knows How and What to do”
+Advanced Mathematics; Computer Science; Data Mining and Integration; Database Science; Research Design; Statistical Modeling; Machine Learning; Operations Research; Programming and Scripting
+
+The technical competency cluster depicts the foundational technical and specialty knowledge and skills needed for successful performance in each job or role.
+
+Data Science Consulting: “Can Do in a Client and Customer Environment”
+
+Collaboration and Teamwork; Communications; Data Science Consulting; Ethics and Integrity
+
+Cognitive: “Able to Do or Learn to Do”
+
+Critical Thinking; Inductive and Deductive Reasoning; Problem Solving
+
+The characteristics in the consulting competency cluster can help Data Scientists easily integrate into various market or domain contexts and partner with business units to understand the environment and solve complex problems.
+The cognitive competency cluster represents the type of critical thinking and reasoning abilities (both inductive and deductive) a Data Scientist should have to perform their job.
+
+Personality: “Willing or Motivated to Do”
+
+Adaptability/Flexibility; Ambiguity Tolerance; Detail Orientation; Innovation and Creativity; Inquisitiveness; Perseverance; Resilience and Hardiness; Self- Conﬁdence; Work Ethic
+
+The personality competency cluster describes the personality traits that drive behaviors that are beneﬁcial to Data Scientists, such as inquisitiveness, creativity, and perseverance.
+
+Reach Back Competencies for Data Science Teams
+
+Business Acumen; Data Visualization; Domain Expertise; Program Management
+
+Source: Booz Allen Hamilton
+
+Start Here for the Basics Start Here for the Basics
+
+41 41
+
+The most important qualities of Data Scientists tend to be the intangible aspects of their personalities. Data Scientists are by nature curious, creative, focused, and detail-oriented.
+
+››
+
+››
+
+››
+
+››
+Curiosity is necessary to peel apart a problem and examine the interrelationships between data that may appear superficially unrelated.
+
+Creativity is required to invent and try new approaches to solving a problem, which often times have never been applied in such a context before.
+
+Focus is required to design and test a technique over days and weeks, find it doesn’t work, learn from the failure, and try again.
+
+Attention to Detail is needed to maintain rigor, and to detect and avoid over-reliance on intuition when examining data.
+
+We have found the single most important attribute is flexibility in overcoming setbacks - the willingness to abandon one idea and try a new approach. Often, Data Science is a series of dead ends before, at last, the way forward is identified. It requires a unique set of personality attributes to succeed in such an environment. Technical skills can be developed over time: the ability to be flexible – and patient, and persistent – cannot.
+Finding the Athletes for Your Team
+Building a Data Science team is complex. Organizations must simultaneously engage existing internal staff to create an “anchor” who can be used to recruit and grow the team, while at the same time undergo organizational change and transformation to meaningfully incorporate this new class of employee. Building a team starts with identifying existing staff within an organization who have a high aptitude for Data Science. Good candidates will have a formal background in any of the three foundational technical skills we mentioned, and will most importantly have the personality traits necessary for Data Science. They may often have advanced (masters or higher) degrees, but not always. The very first staff you identify should also have good leadership traits and a sense of purpose for the organization, as they will lead subsequent staffing and recruiting efforts. Don’t discount anyone – you will find Data Scientists in the strangest places with the oddest combinations of backgrounds.
+» Don’t judge a book by its cover, or a Data Scientist by his or her degree in this case. Amazing Data Scientists can be found anywhere. Just look at the diverse and surprising sampling of degrees held by Our Experts:
+
+› Bioinformatics
+
+› Biomedical Engineering
+
+› Biophysics
+
+› Business
+
+› Computer Graphics
+
+› Computer Science
+
+› English
+
+› Forest Management
+
+› History
+
+›
+
+Industrial Engineering
+
+›
+
+Information Technology
+
+› Mathematics
+
+› National Security Studies
+
+› Operations Research
+
+› Physics
+
+› Wildlife & Fisheries Management
+
+T H E F I ELD G U I D E to D A T A S C I E N C E
+
+Shaping the Culture
+
+It is no surprise—building a culture is hard and there is just as much art to it as there is science. It is about deliberately creating the conditions for Data Science to flourish (for both Data Scientists and the average employee). You can then step back to empower collective ownership of an organic transformation.
+Data Scientists are fundamentally curious and imaginative. We have a saying on our team, “We’re not nosy, we’re Data Scientists.” These qualities are fundamental to the success of the project and to gaining new dimensions on challenges and questions. Often Data Science projects are hampered by the lack of the ability to imagine something new and different. Fundamentally, organizations must foster trust and transparent communication across all levels, instead of deference to authority, in order to establish a strong Data Science team. Managers should be prepared to invite participation more frequently, and offer explanation or apology less frequently.
+It is important to provide a path into the Data Science “club” and to empower the average employee to feel comfortable and conversant with Data Science. For something to be part of organizational culture, it must be part of the fabric of the employee behavior. That means employees must interact with and use data products in their daily routines. Another key ingredient to shaping the right culture is that all employees need a baseline of Data Science knowledge, starting with a common lexicon, to facilitate productive collaboration and instill confidence. While not everyone will be Data Scientists, employees need to identify with Data Science and be equipped with the knowledge, skills, and abilities to work with Data Scientists to drive smarter decisions and deliver exponential organizational performance.
+
+» “I'm not nosey, I'm a Data
+
+Scientist”
+
+› Always remember that
+unrelenting curiosity and imagination should be the hallmarks of Data Science. They are fundamental to the success of every Data Science project.
+
+Start Here for the Basics Start Here for the Basics
+
+43 43
+
+How to Generate Momentum
+
+A Data Science effort can start at the grass roots level by a few folks tackling hard problems, or as directed by the Chief Executive Officer, Chief Data Officer, or Chief Analytics Officer. Regardless of how an effort starts, political headwinds often present more of a challenge than solving any technical hurdles. To help battle the headwinds, it is important to generate momentum and prove the value a Data Science team can provide. The best way to achieve this is usually through a Data Science prototype or proof of concept. Proofs of concepts can generate the critical momentum needed to jump start any Data Science Capability Four qualities, in particular, are essential for every Data Science prototype:
+1. Organizational Buy-in: A prototype will only succeed if the individuals involved believe in it and are willing to do what they can to make it successful. A good way to gauge interest is to meet with the middle managers; their views are usually indicative of the larger group.
+
+2. Clear ROI: Before choosing a prototype problem, ensure that the ROI of the analytic output can be clearly and convincingly demonstrated for both the project and the organization as a whole. This outcome typically requires first reaching consensus on how the ROI will be determined and measured, so that the benefit can be quantified.
+
+3. Necessary Data: Before selecting a prototype, you must first
+
+determine exactly what data is needed, whether it will actually be available, and what it will cost in terms of time and expense. It is important to note that organizations do not need all the possible data – they can still create successful analytics even with some gaps.
+4. Limited Complexity and Duration: The problem addressed
+
+by the prototype should achieve a balance between being too complex and too easy. Organizations new to Data Science often try to show its value with highly complex projects. However, the greater the complexity, the greater the risk of failure. At the same time, if the problem is too easy to solve, senior leaders and others in the organization may not see the need for Data Science. Look for efforts that could benefit from large datasets, or bringing together disparate datasets that have never been combined before, as opposed to those that require complex analytic approaches. In these cases, there is often low-hanging fruit that can lead to significant value for the organization.
+
+Start Here for the Basics Start Here for the Basics
+
+45 45
+
+TA K E O F F the T R A I N I N G W H E E L S
+
+THE PRACTITIONER’S GUIDE TO DATA SCIENCE
+
+Read this section to get beyond the hype and learn the secrets of being a Data Scientist.
+Guiding Principles
+
+Failing is good; failing quickly is even better.
+
+The set of guiding principles that govern how we conduct the tradecraft of Data Science are based loosely on the central tenets of innovation, as the two areas are highly connected. These principles are not hard and fast rules to strictly follow, but rather key tenets that have emerged in our collective consciousness. You should use these to guide your decisions, from problem decomposition through implementation.
+
+› Be willing to fail. At the core of Data Science is the idea of
+experimentation. Truly innovative solutions only emerge when you experiment with new ideas and applications. Failure is an acceptable byproduct of experimentation. Failures locate regions that no longer need to be considered as you search for a solution. › Fail often and learn quickly. In addition to a willingness to fail, be ready to fail repeatedly. There are times when a dozen approaches must be explored in order to find the one that works. While you shouldn’t be concerned with failing, you should strive to learn from the attempt quickly. The only way you can explore a large number of solutions is to do so quickly.
+
+› Keep the goal in mind. You can often get lost in the details and challenges of an implementation. When this happens, you lose sight of your goal and begin to drift off the path from data to analytic action. Periodically step back, contemplate your goal, and evaluate whether your current approach can really lead you where you want to go.
+› Dedication and focus lead to success. You must often explore
+
+many approaches before finding the one that works. It’s easy to become discouraged. You must remain dedicated to your analytic goal. Focus on the details and the insights revealed by the data. Sometimes seemingly small observations lead to big successes.
+
+» Tips From the Pros
+
+It can be easier to rule out a solution
+
+than conﬁrm its correctness. As a
+
+result, focus on exploring obvious
+
+shortcomings that can quickly
+
+disqualify an approach. This will allow
+
+you to focus your time on exploring
+
+truly viable approaches as opposed to
+
+dead ends.
+
+» Tips From the Pros
+
+If the ﬁrst thing you try to do is to
+
+› Complicated does not equal better. As technical practitioners, we
+
+create the ultimate solution, you will
+
+fail, but only after banging your head
+
+against a wall for several weeks.
+have a tendency to explore highly complex, advanced approaches. While there are times where this is necessary, a simpler approach can often provide the same insight. Simpler means easier and faster to prototype, implement and verify.
+
+T H E F I ELD G U I D E to D A T A S C I E N C E
+
+The Importance of Reason
+
+Beware: in the world of Data Science, if it walks like a duck and quacks like a duck, it might just be a moose.
+
+Data Science supports and encourages shifting between deductive (hypothesis-based) and inductive (pattern-based) reasoning. Inductive reasoning and exploratory data analysis provide a means to form or refine hypotheses and discover new analytic paths. Models of reality no longer need to be static. They are constantly tested, updated and improved until better models are found.
+The analysis of big data has brought inductive reasoning to the forefront. Massive amounts of data are analyzed to identify correlations. However, a common pitfall to this approach is confusing correlation with causation. Correlation implies but does not prove causation. Conclusions cannot be drawn from correlations until the underlying mechanisms that relate the data elements are understood. Without a suitable model relating the data, a correlation may simply be a coincidence.
+
+» Correlation without
+
+Causation
+
+A common example of this phenomenon is the high correlation between ice cream consumption and the murder rate during the summer months. Does this mean ice cream consumption causes murder or, conversely, murder causes ice cream consumption? Most likely not, but you can see the danger in mistaking correlation for causation. Our job as Data Scientists is making sure we understand the difference.
+
+Take off the Training Wheels
+
+49
+
+Component Parts of Data Science
+There is a web of components that interact to create your solution space. Understanding how they are connected is critical to your ability to engineer solutions to Data Science problems.
+The components involved in any Data Science project fall into a number of different categories including the data types analyzed, the analytic classes used, the learning models employed and the execution models used to run the analytics. The interconnection across these components, shown in the figure, Interconnection Among the Component Parts of Data Science, speaks to the complexity of engineering Data Science solutions. A choice made for one component exerts influence over choices made for others categories. For example, data types lead the choices in analytic class and learning models, while latency, timeliness and algorithmic parallelization strategy inform the execution model. As we dive deeper into the technical aspects of Data Science, we will begin with an exploration of these components and touch on examples of each.
+
+Read this to get the quick and dirty:
+When engineering a Data Science solution, work from an understanding of the components that define the solution space. Regardless of your analytic goal, you must consider the data types with which you will be working, the classes of analytics you will use to generate your data product,
+
+how the learning models embodied will operate and evolve, and the execution models that will govern how the analytic will be run. You will be able to articulate a complete Data Science solution only after considering each of these aspects.
+
+T H E F I ELD G U I D E to D A T A S C I E N C E
+
+Data Types
+Data types and analytic goals go hand-in-hand much like the chicken and the egg; it is not always clear which comes first. Analytic goals are derived from business objectives, but the data type also influences the goals. For example, the business objective of understanding consumer product perception drives the analytic goal of sentiment analysis. Similarly, the goal of sentiment analysis drives the selection of a text-like data type such as social media content. Data type also drives many other choices when engineering your solutions.
+There are a number of ways to classify data. It is common to characterize data as structured or unstructured. Structured data exists when information is clearly broken out into fields that have an explicit meaning and are highly categorical, ordinal or numeric. A related category, semi-structured, is sometimes used to describe structured data that does not conform to the formal structure of data models associated with relational databases or other forms of data tables, but nonetheless contains tags or other markers. Unstructured data, such as natural language text, has less clearly delineated meaning. Still images, video and audio often fall under the category of unstructured data. Data in this form requires preprocessing to identify and extract relevant ‘features.’ The features are structured information that are used for indexing and retrieval, or training classification, or clustering models.
+Data may also be classified by the rate at which it is generated, collected or processed. The distinction is drawn between streaming data that arrives constantly like a torrent of water from a fire hose, and batch data, which arrives in buckets. While there is rarely a connection between data type and data rate, data rate has significant influence over the execution model chosen for analytic implementation and may also inform a decision of analytic class or learning model.
+
+Take off the Training Wheels
+
+55
+
+Fractal Analytic Model
+
+Data Science analytics are a lot like broccoli.
+
+Fractals are mathematical sets that display self-similar patterns. As you zoom in on a fractal, the same patterns reappear. Imagine a stalk of broccoli. Rip off a piece of broccoli and the piece looks much like the original stalk. Progressively smaller pieces of broccoli still look like the original stalk.
+Data Science analytics are a lot like broccoli – fractal in nature in both time and construction. Early versions of an analytic follow the same development process as later versions. At any given iteration, the analytic itself is a collection of smaller analytics that often decompose into yet smaller analytics.
+
+T H E F I ELD G U I D E to D A T A S C I E N C E
+
+GOAL
+
+You must first have some idea of your analytic goal and the end state of the analysis. Is it to Discover, Describe, Predict, or Advise? It is probably a combination of several of those. Be sure that before you start, you define the business value of the data and how you plan to use the insights to drive decisions, or risk ending up with interesting but non-actionable trivia.
+
+DATA
+Data dictates the potential insights that analytics can provide. Data Science is about finding patterns in variable data and comparing those patterns. If the data is not representative of the universe of events you wish to analyze, you will want to collect that data through carefully planned variations in events or processes through A/B testing or design of experiments. Datasets are never perfect so don’t wait for perfect data to get started. A good Data Scientist is adept at handling messy data with missing or erroneous values. Just make sure to spend the time upfront to clean the data or risk generating garbage results.
+
+COMPUTATION
+Computation aligns the data to goals through the process of creating insights. Through divide and conquer, computation decomposes into several smaller analytic capabilities with their own goals, data, computation and resulting actions, just like a smaller piece of broccoli maintains the structure of the original stalk. In this way, computation itself is fractal. Capability building blocks may utilize different types of execution models such as batch computation or streaming, that individually accomplish small tasks. When properly combined together, the small tasks produce complex, actionable results.
+
+ACTION
+
+How should engineers change the manufacturing process to generate higher product yield? How should an insurance company choose which policies to offer to whom and at what price? The output of computation should enable actions that align to the goals of the data product. Results that do not support or inspire action are nothing but interesting trivia.
+Given the fractal nature of Data Science analytics in time and construction, there are many opportunities to choose fantastic or shoddy analytic building blocks. The Analytic Selection Process offers some guidance.
+
+Take off the Training Wheels
+
+63
+
+The Analytic Selection Process
+
+If you focus only on the science aspect of Data Science you will never become a data artist.
+
+A critical step in Data Science is to identify an analytic technique that will produce the desired action. Sometimes it is clear; a characteristic of the problem (e.g., data type) points to the technique you should implement. Other times, however, it can be difficult to know where to begin. The universe of possible analytic techniques is large. Finding your way through this universe is an art that must be practiced. We are going to guide you on the next portion of your journey - becoming a data artist.
+
+T H E F I ELD G U I D E to D A T A S C I E N C E
+
+Technique
+
+Description
+
+Tips From the Pros
+References we love to read
+
+Collaborative Filtering
+
+Also known as 'Recommendation,' suggest or eliminate items from a set by comparing a history of actions against items performed by users. Finds similar items based on who used them or similar users based on the items they use.
+
+Coordinate Transforma- tion
+
+Provides a different perspective on data.
+
+Deep Learning
+
+Method that learns features that leads to higher concept learning. Usually very deep neural network architectures.
+
+Use Singular Value Decomposition based Recommendation for cases where there are latent factors in your domain, e.g., genres in movies.
+
+Owen, Sean, Robin Anil, Ted Dunning, and Ellen Friedman. Mahout in Action. New Jersey: Manning, 2012. Print.
+Changing the coordinate system for data, for example, using polar or cylindrical coordinates, may more readily highlight key structure in the data. A key step in coordinate transformations is to appreciate multidimensionality and to systematically analyze subspaces of the data.
+
+Abbott, Edwin A., Flatland: A Romance of Many Dimensions. United Kingdom: Seely & Co., 1884. Print.
+
+Utilize a GPU to efﬁciently train complex models.
+
+Bengio, Yoshua, and Yann LeCun. “Scaling Learning Algorithms towards AI.” Large- Scale Kernel Machines. New York: MIT Press, 2007. Print.
+
+Montgomery, Douglas. Design and Analysis of Experiments. New Jersey: John Wiley & Sons, 2012. Print.
+
+Design of Experiments
+
+Applies controlled experiments to quantify effects on system output caused by changes to inputs.
+
+Fractional factorial designs can signiﬁcantly reduce the number of different types of experiments you must conduct.
+
+Differential Equations
+Used to express relationships between functions and their derivatives, for example, change over time.
+
+Differential equations can be used to formalize models and make predictions. The equations themselves can be solved numerically and tested with different initial conditions to study system trajectories.
+
+Zill, Dennis, Warren Wright, and Michael Cullen. Differential Equations with Boundary-Value Problems. Connecticut: Cengage Learning, 2012. Print.
+
+Discrete Event Simulation
+
+Simulates a discrete sequence of events where each event occurs at a particular instant in time. The model updates its state only at points in time when events occur.
+
+Discrete event simulation is useful when analyzing event based processes such as production lines and service centers to determine how system level behavior changes as different process parameters change. Optimization can integrate with simulation to gain efﬁciencies in a process.
+Burrus, C. Sidney, Ramesh A. Gopinath, Haitao Guo, Jan E. Odegard and Ivan W. Selesnick. Introduction to Wavelets and Wavelet Transforms: A Primer. New Jersey: Prentice Hall, 1998. Print.
+
+Discrete Wavelet Transform
+
+Transforms time series data into frequency domain preserving locality information.
+
+Offers very good time and frequency localization. The advantage over Fourier transforms is that it preserves both frequency and locality.
+
+Ensemble Learning
+
+Learning multiple models and combining output to achieve better performance.
+
+Be careful not to overﬁt data by having too many model parameters and overtraining.
+
+Expert Systems
+
+Systems that use symbolic logic to reason about facts. Emulates human reasoning.
+
+Useful to have a human readable explanation of why a system came to a conclusion.
+
+Exponential Smoothing
+
+Used to remove artifacts expected from collection error or outliers.
+In comparison to a using moving average where past observations are weighted equally, exponential smoothing assigns exponentially decreasing weights over time.
+
+Burrus, C.Sidney, Ramesh A. Gopinath, Haitao Guo, Jan E. Odegard, and Ivan W. Selesnick. Introduction to Wavelets and Wavelet Transforms: A Primer. New Jersey: Prentice Hall, 1998. Print.
+
+Dietterich, Thomas G. “Ensemble Methods in Machine Learning.” Lecture Notes in Computer Science. Springer, 2000. Print.
+
+Shortliffe, Edward H., and Bruce G. Buchanan. “A Model of Inexact Reasoning in Medicine.” Mathematical Biosciences. Elsevier B.V., 1975. Print.
+
+Chatﬁeld, Chris, Anne B. Koehler, J. Keith Ord, and Ralph D. Snyder. “A New Look at Models for Exponential Smoothing.” Journal of the Royal Statistical Society: Series D (The Statistician). Royal Statistical Society, 2001. Print.
+
+Compiled by: Booz Allen Hamilton
+
+Take off the Training Wheels
+
+79
+
+Technique
+
+Description
+
+Tips From the Pros
+
+References we love to read
+Factor Analysis
+
+Fast Fourier Transform
+
+Format Conversion
+
+Describes variability among correlated variables with the goal of lowering the number of unobserved variables, namely, the factors.
+
+Transforms time series from time to frequency domain efﬁciently. Can also be used for image improvement by spatial transforms.
+
+Creates a standard representation of data regardless of source format. For example, extracting raw UTF-8 encoded text from binary ﬁle formats such as Microsoft Word or PDFs.
+
+If you suspect there are inmeasurable inﬂuences on your data, then you may want to try factor analysis.
+
+Child, Dennis. The Essentials of Factor Analysis. United Kingdom: Cassell Educational, 1990. Print.
+
+Filtering a time varying signal can be done more effectively in the frequency domain. Also, noise can often be identiﬁed in such signals by observing power at aberrant frequencies.
+
+Mitra, Partha P., and Hemant Bokil. Observed Brain Dynamics. United Kingdom: Oxford University Press, 2008. Print.
+There are a number of open source software packages that support format conversion and can interpret a wide variety of formats. One notable package is Apache Tikia.
+
+Ingersoll, Grant S., Thomas S. Morton, and Andrew L. Farris. Taming Text: How to Find, Organize, and Manipulate It. New Jersey: Manning, 2013. Print.
+
+Fuzzy Logic
+
+Logical reasoning that allows for degrees of truth for a statement.
+
+Utilize when categories are not clearly deﬁned. Concepts such as "warm", "cold", and "hot" can mean different things at different temperatures and domains.
+
+Zadeh L.A., "Fuzzy Sets.” Information and Control. California: University of California, Berkeley, 1965. Print.
+
+Gaussian Filtering
+
+Acts to remove noise or blur data.
+
+Can be used to remove speckle noise from images.
+
+Generalized Linear Models
+
+Expands ordinary linear regression to allow for error distribution that is not normal.
+
+Use if the observed error in your system does not follow the normal distribution.
+
+Genetic Algorithms
+Evolves candidate models over generations by evolutionary inspired operators of mutation and crossover of parameters.
+
+Increasing the generation size adds diversity in considering parameter combinations, but requires more objective function evaluation. Calculating individuals within a generation is strongly parallelizable. Representation of candidate solutions can impact performance.
+
+Grid Search
+
+Systematic search across discrete parameter values for parameter exploration problems.
+
+A grid across the parameters is used to visualize the parameter landscape and assess whether multiple minima are present.
+
+Parker, James R. Algorithms for Image Processing and Computer Vision. New Jersey: John Wiley & Sons, 2010. Print.
+
+MacCullagh, P., and John A. Nelder. Generalized Linear Models. Florida: CRC Press, 1989. Print.
+
+De Jong, Kenneth A. Evolutionary Computation - A Uniﬁed Approach. Massachusetts: MIT Press, 2002. Print.
+Kolda, Tamara G., Robert M. Lewis, and Virginia Torczon. “Optimization by Direct Search: New Perspectives on Some Classical and Modern Methods.” SIAM Review. Society for Industrial and Applied Mathematics, 2003. Print.
+
+Bishop, Christopher M. Pattern Recognition and Machine Learning. New York: Springer, 2006. Print.
+
+One of the most powerful properties of Hidden Markov Models is their ability to exhibit some degree of invariance to local warping (compression and stretching) of the time axis. However, a signiﬁcant weakness of the Hidden Markov Model is the way in which it represents the distribution of times for which the system remains in a given state.
+
+Provides views of clusters at multiple resolutions of closeness. Algorithms begin to slow for larger datasets due to most implementations exhibiting O(N3) or O(N2) complexity.
+
+Rui Xu, and Don Wunsch. Clustering. New Jersey: Wiley- IEEE Press, 2008. Print.
+When applying clustering techniques, make sure to understand the shape of your data. Clustering techniques will return poor results if your data is not circular or ellipsoidal shaped.
+
+Rui Xu, and Don Wunsch. Clustering. New Jersey: Wiley- IEEE Press, 2008. Print.
+
+Compiled by: Booz Allen Hamilton
+
+Hidden Markov Models
+
+Models sequential data by determining the discrete latent variables, but the observables may be continuous or discrete.
+
+Hierarchical Clustering
+
+K-means and X-means Clustering
+
+Connectivity based clustering approach that sequentially builds bigger (agglomerative) or smaller (divisive) clusters in the data.
+
+Centroid based clustering algorithms, where with K means the number of clusters is set and X means the number of clusters is unknown.
+
+T H E F I ELD G U I D E to D A T A S C I E N C E
+
+Technique
+
+Description
+
+Tips From the Pros
+
+References we love to read
+
+Linear, Non-linear, and Integer Programming
+Set of techniques for minimizing or maximizing a function over a constrained set of input parameters.
+
+Start with linear programs because algorithms for integer and non-linear variables can take much longer to run.
+
+Winston, Wayne L. Operations Research: Applications and Algorithms. Connecticut: Cengage Learning, 2003. Print.
+
+Markov Chain Monte Carlo (MCMC)
+
+A method of sampling typically used in Bayesian models to estimate the joint distribution of parameters given the data.
+
+Problems that are intractable using analytic approaches can become tractable using MCMC, when even considering high-dimensional problems. The tractability is a result of using statistics on the underlying distributions of interest, namely, sampling with Monte Carlo and considering the stochastic sequential process of Markov Chains.
+
+Andrieu, Christophe, Nando de Freitas, Amaud Doucet, and Michael I. Jordan. “An Introduction to MCMC for Machine Learning.” Machine Learning. Kluwer Academic Publishers, 2003. Print.
+Monte Carlo Methods
+
+Set of computational techniques to generate random numbers.
+
+Particularly useful for numerical integration, solutions of differential equations, computing Bayesian posteriors, and high dimensional multivariate sampling.
+
+Fishman, George S. Monte Carlo: Concepts, Algorithms, and Applications. New York: Springer, 2003. Print.
+
+Naïve Bayes
+
+Predicts classes following Bayes Theorem that states the probability of an outcome given a set of features is based on the probability of features given an outcome.
+
+Assumes that all variables are independent, so it can have issues learning in the context of highly interdependent variables. The model can be learned on a single pass of data using simple counts and therefore is useful in determining whether exploitable patterns exist in large datasets with minimal development time.
+
+Ingersoll, Grant S., Thomas S. Morton, and Andrew L. Farris. Taming Text: How to Find, Organize, and Manipulate It. New Jersey: Manning, 2013. Print.
+Neural Networks
+
+Learns salient features in data by adjusting weights between nodes through a learning rule.
+
+Training a neural network takes substantially longer than evaluating new data with an already trained network. Sparser network connectivity can help to segment the input space and improve performance on classiﬁcation tasks.
+
+Haykin, Simon O. Neural Networks and Learning Machines. New Jersey: Prentice Hall, 2008. Print.
+
+Outlier Removal
+
+Method for identifying and removing noise or artifacts from data.
+
+Be cautious when removing outliers. Sometimes the most interesting behavior of a system is at times when there are aberrant data points.
+
+Maimon, Oded, and Lior Rockach. Data Mining and Knowledge Discovery Handbook: A Complete Guide for Practitioners and Researchers. The Netherlands: Kluwer Academic Publishers, 2005. Print.
+
+Principal Components Analysis
+
+Enables dimensionality reduction by identifying highly correlated dimensions.
+Many large datasets contain correlations between dimensions; therefore part of the dataset is redundant. When analyzing the resulting principal components, rank order them by variance as this is the highest information view of your data. Use skree plots to infer the optimal number of components.
+
+Wallisch, Pascal, Michael E. Lusignan, Marc D. Benayoun, Tanya I. Baker, Adam Seth Dickey, and Nicholas G. Hatsopoulos. Matlab for Neuroscientists. New Jersey: Prentice Hall, 2009. Print.
+
+Random Search
+
+Randomly adjust parameters to ﬁnd a better solution than currently found.
+
+Use as a benchmark for how well a search algorithm is performing. Be careful to use a good random number generator and new seed.
+
+Regression with Shrinkage (Lasso)
+
+A method of variable selection and prediction combined into a possibly biased linear model.
+
+There are different methods to select the lambda parameter. A typical choice is cross validation with MSE as the metric.
+
+Sensitivity Analysis
+Involves testing individual parameters in an analytic or model and observing the magnitude of the effect.
+
+Insensitive model parameters during an optimization are candidates for being set to constants. This reduces the dimensionality of optimization problems and provides an opportunity for speed up.
+
+Bergstra J. and Bengio Y. Random Search for Hyper- Parameter Optimization, Journal of Machine Learning Research 13, 2012.
+
+Tibshirani, Robert. “Regression Shrinkage and Selection via the Lasso.” Journal of the Royal Statistical Society. Series B (Methodological). Toronto: Royal Statistical Society, 1996. Print.
+
+Saltelli, A., Marco Ratto, Terry Andres, Francesca Campolongo, Jessica Cariboni, Debora Gatelli, Michaela Saisana, and Stefano Tarantola. Global Sensitivity Analysis: the Primer. New Jersey: John Wiley & Sons, 2008. Print.
+
+Compiled by: Booz Allen Hamilton
+
+Take off the Training Wheels
+
+81
+
+Technique
+
+Description
+
+Tips From the Pros
+
+References we love to read
+
+Simulated Annealing
+Stepwise Regression
+
+Stochastic Gradient Descent
+
+Named after a controlled cooling process in metallurgy, and by analogy using a changing temperature or annealing schedule to vary algorithmic convergence.
+
+A method of variable selection and prediction. Akaike's information criterion AIC is used as the metric for selection. The resulting predictive model is based upon ordinary least squares, or a general linear model with parameter estimation via maximum likelihood.
+
+General-purpose optimization for learning of neural networks, support vector machines, and logistic regression models.
+
+The standard annealing function allows for initial wide exploration of the parameter space followed by a narrower search. Depending on the search priority the annealing function can be modiﬁed to allow for longer explorative search at a high temperature.
+
+Bertsimas, Dimitris, and John Tsitsiklis. “Simulated Annealing.” Statistical Science. 1993. Print.
+Caution must be used when considering Stepwise Regression, as over ﬁtting often occurs. To mitigate over ﬁtting try to limit the number of free variables used.
+
+Hocking, R.R. “The Analysis and Selection of Variables in Linear Regression.” Biometrics. 1976. Print.
+
+Applied in cases where the objective function is not completely differentiable when using sub-gradients.
+
+Support Vector Machines
+
+Projection of feature vectors using a kernel function into a space where classes are more separable.
+
+Try multiple kernels and use k-fold cross validation to validate the choice of the best one.
+
+Term Frequency Inverse Document Frequency
+
+Topic Modeling (Latent Dirichlet Allocation)
+
+A statistic that measures the relative importance of a term from a corpus.
+Typically used in text mining. Assuming a corpus of news articles, a term that is very frequent such as “the” will likely appear many times in many documents, having a low value. A term that is infrequent such as a person’s last name that appears in a single article will have a higher TD IDF score.
+
+Ingersoll, Grant S., Thomas S. Morton, and Andrew L. Farris. Taming Text: How to Find, Organize, and Manipulate It. New Jersey: Manning, 2013. Print.
+
+Identiﬁes latent topics in text by examining word co-occurrence.
+
+Employ part-of-speech tagging to eliminate words other than nouns and verbs. Use raw term counts instead of TF/IDF weighted terms.
+
+Tree Based Methods
+
+Models structured as graph trees where branches indicate decisions.
+
+Can be used to systematize a process or act as a classiﬁer.
+
+T-Test
+
+Hypothesis test used to test for differences between two groups.
+
+Make sure you meet the tests assumptions and watch out for Family Wise error when running multiple tests.
+
+Wrapper Methods
+Feature set reduction method that utilizes performance of a set of features on a model, as a measure of the feature set’s performance. Can help identify combinations of features in models that achieve high performance.
+
+Utilize k-fold cross validation to control over ﬁtting.
+
+T H E F I ELD G U I D E to D A T A S C I E N C E
+
+Witten, Ian H., Eibe Frank, and Mark A. Hall. Data Mining: Practical Machine Learning Tools and Techniques. Massachusetts: Morgan Kaufmann, 2011. Print.
+
+Hsu, Chih-Wei, Chih-Chung Chang, and Chih-Jen Lin. “A Practical Guide to Support Vector Classiﬁcation.” National Taiwan University Press, 2003. Print.
+
+Blei, David M., Andrew Y. Ng, and Michael I. Jordan. “Latent Dirichlet Allocation.” Journal of Machine Learning Research. 2003. Print.
+
+James, G., D. Witten, T. Hastie, and R. Tibshirani. “Tree Based Methods.” An Introduction to Statistical Learning. New York: Springer, 2013. Print.
+Bhattacharyya, Gouri K., and Richard A. Johnson. Statistical Concepts and Models. Wiley, 1977. Print.
+
+John, George H., Ron Kohavi, and Karl Pﬂeger. “Irrelevant Features and the Subset Selection Problem.” Proceedings of ICML-94, 11th International Converence on Machine Learning. New Brunswick, New Jersey. 1994. Conference Presentation.
+
+Compiled by: Booz Allen Hamilton
+
+LI F E in T H E T R E N C H E S
+
+NAVIGATING NECK DEEP IN DATA
+
+Our Data Science experts have learned and developed new solutions over the years from properly framing or reframing analytic questions. In this section, we list a few important topics to Data Science coupled with firsthand experience from our experts.
+
+C L O S I N G T I M E
+
+››
+
+P A R T I N G T H O U G H T S
+Data Science capabilities are creating data analytics that are touching every aspect of our lives on a daily basis. From visiting the doctor, to driving our cars, to shopping for services Data Science is quietly changing the way we interactive with and explore our world. We hope we have helped you truly understand the potential of your data and how to become extraordinary thinkers by asking the right questions. We hope we have helped continue to drive forward the science and art of Data Science. Most importantly, we hope you are leaving with a newfound passion and excitement for Data Science.
+
+Thank you for taking this journey with us. Please join our conversation and let your voice be heard. Email us your ideas and perspectives at data_science@bah.com or submit them via a pull request on the Github repository.
+
+Tell us and the world what you know. Join us. Become an author of this story.
+
+Closing Time
+
+119
+
+››
+
+R E F E R E N C E S
+1. Commonly attributed to: Nye, Bill. Reddit Ask Me Anything (AMA).
+
+July 2012. Web. Accessed 15 October 2013. SSRN: <http://www.reddit. com/r/IAmA/comments/x9pq0/iam_bill_nye_the_science_guy_ama>
+
+2. Fayyad, Usama, Gregory Piatetsky-Shapiro, and Padhraic Smyth. “From Data Mining to Knowledge Discovery in Databases.” AI Magazine 17.3 (1996): 37-54. Print.
+
+3.
+
+“Mining Data for Nuggets of Knowledge.” Knowledge@Wharton,1999. Web. Accessed 16 October 2013. SSRN: <http://knowledge.wharton. upenn.edu/article/mining-data-for-nuggets-of-knowledge>
+
+4. Cleveland, William S. “Data Science: An Action Plan for Expanding the Technical Areas of the Field of Statistics.” International Statistical Review 69.1 (2001): 21-26. Print.
+
+5. Davenport, Thomas H., and D.J. Patil. “Data Scientist: The Sexiest Job of the 21st Century.” Harvard Business Review 90.10 (October 2012): 70–76. Print.
+6. Smith, David. “Statistics vs Data Science vs BI.” Revolutions, 15 May 2013. Web. Accessed 15 October 2013. SSRN:<http://blog. revolutionanalytics.com/2013/05/statistics-vs-data-science-vs-bi.html>
+
+7. Brynjolfsson, Erik, Lorin M. Hitt, and Heekyung H. Kim. “Strength in Numbers: How Does Data-Driven Decision Making Affect Firm Performance?” Social Science Electronic Publishing, 22 April 2011. Web. Accessed 15 October 2013. SSRN: <http://ssrn.com/abstract=1819486 or http://dx.doi.org/10.2139/ssrn.1819486>
+
+8.
+
+“The Stages of an Analytic Enterprise.” Nucleus Research. February 2012. Whitepaper.
+
+9. Barua, Anitesh, Deepa Mani, and Rajiv Mukherjee. “Measuring the
+
+Business Impacts of Effective Data.” University of Texas. Web. Accessed 15 October 2013. SSRNL: <http://www.sybase.com/files/White_Papers/ EffectiveDataStudyPt1-MeasuringtheBusinessImpactsofEffectiveDa ta-WP.pdf>
+10. Zikopoulos, Paul, Dirk deRoos, Kirshnan Parasuraman, Thomas Deutsch, David Corrigan and James Giles. Harness the Power of Big Data: The IBM Big Data Platform. New York: McGraw Hill, 2013. Print. 281pp.
+
+T H E F I ELD G U I D E to D A T A S C I E N C E
+
+11. Booz Allen Hamilton. Cloud Analytics Playbook. 2013. Web. Accessed 15 October 2013. SSRN: <http://www.boozallen.com/media/file/Cloud- playbook-digital.pdf>
+
+12. Conway, Drew. “The Data Science Venn Diagram.” March 2013.
+
+Web. Accessed 15 October 2013. SSRN: <http://drewconway.com/ zia/2013/3/26/the-data-science-venn-diagram>
+
+13. Booz Allen Hamilton. Tips for Building a Data Science Capability. 2015.
+
+Web Accessed 2 September 2015. SSRN: < https://www.boozallen.com/ content/dam/boozallen/documents/2015/07/DS-Capability-Handbook.pdf>
+
+14. Mnih et al. 2015. Human-level control through deep reinforcement
+
+learning. Nature. 518: 529-533.
+
+15. Torán, Jacobo. “On the Hardness of Graph Isomorphism.” SIAM Journal
+on Computing. 33.5 (2004): 1093-1108. Print.
+
+16. Guyon, Isabelle and Andre Elisseeff. “An Introduction to Variable and Feature Selection.” Journal of Machine Learning Research 3 (March 2003):1157-1182. Print.
+
+17. Golub T., D. Slonim, P. Tamayo, C. Huard, M. Gaasenbeek, J. Mesirov, H. Coller, M. Loh, J. Downing, M. Caligiuri, C. Bloomfield, and E. Lander. “Molecular Classification of Cancer: Class Discovery and Class Prediction by Gene Expression Monitoring.” Science. 286.5439 (1999): 531-537. Print.
+
+18. Haykin, Simon O. Neural Networks and Learning Machines. New Jersey:
+
+Prentice Hall, 2008. Print.
+
+19. De Jong, Kenneth A. Evolutionary Computation - A Unified Approach.
+
+Massachusetts: MIT Press, 2002. Print.
+
+20. Yacci, Paul, Anne Haake, and Roger Gaborski. “Feature Selection of
+
+Microarray Data Using Genetic Algorithms and Artificial Neural Networks.” ANNIE 2009. St Louis, MO. 2-4 November 2009. Conference Presentation.
+
+Closing Time
+
+121
+
+››
+
+About B O O Z A LLEN H A M I L T O N
+Booz Allen Hamilton has been at the forefront of strategy and technology for more than 100 years. Today, the firm provides management and technology consulting and engineering services to leading Fortune 500 corporations, governments, and not-for-profits across the globe. Booz Allen partners with public and private sector clients to solve their most difficult challenges through a combination of consulting, analytics, mission operations, technology, systems delivery, cybersecurity, engineering, and innovation expertise.
+
+With international headquarters in McLean, Virginia, the firm employs more than 22,500 people globally, and had revenue of $5.27 billion for the 12 months ended March 31, 2015. To learn more, visit www.boozallen.com. (NYSE: BAH)
+
+Closing Time
+
+123

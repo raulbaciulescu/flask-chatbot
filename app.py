@@ -9,7 +9,8 @@ import sys
 from flask_cors import CORS, cross_origin
 from langchain.document_loaders import UnstructuredPDFLoader, OnlinePDFLoader, UnstructuredFileLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from utils import recognize, audio_file_directory, pdf_file_directory, write_to_file, should_create_index
+from utils import recognize, audio_file_directory, pdf_file_directory, write_to_file, should_create_index, \
+    texts_directory
 from langchain.vectorstores import Chroma, Pinecone
 from langchain.embeddings.openai import OpenAIEmbeddings
 import pinecone
@@ -46,6 +47,7 @@ embeddings = OpenAIEmbeddings()
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
 index_name = "pinecone-index"
 chain = load_qa_chain(llm, chain_type="stuff")
+
 
 @app.route('/hello')
 @cross_origin()
@@ -88,7 +90,7 @@ def transcribe():
     return recognize(filename)
 
 
-@app.route('/pdf', methods=['POST'])
+@app.route('/pdf-messages', methods=['POST'])
 @cross_origin()
 def pdf():
     if 'file' not in request.files:
@@ -105,49 +107,36 @@ def pdf():
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
     texts = text_splitter.split_documents(data)
 
-    embeddings = OpenAIEmbeddings()
-    index_name = "pinecone-index"
-    pinecone.init(
-        api_key=pinecone_key,  # find at app.pinecone.io
-        environment=pinecone_api_env  # next to api key in console
-    )
     pinecone.delete_index(index_name)
     pinecone.create_index(index_name, dimension=1536)
     docsearch = Pinecone.from_texts([t.page_content for t in texts], embeddings, index_name=index_name)
 
-
-    llm = OpenAI(temperature=0)
-    chain = load_qa_chain(llm, chain_type="stuff")
     docs = docsearch.similarity_search(message, include_metadata=True)
     text = chain.run(input_documents=docs, question=message)
-    return text
+    return jsonify({'text': text})
 
-@app.route('/messages/pdf', methods=['POST'])
+
+@app.route('/pdf-messages/without-pdf', methods=['POST'])
 @cross_origin()
 def create_message_pdf():
     # save file
     message = request.get_json()['message']
     filename = request.get_json()['filename']
+    loader = UnstructuredFileLoader(pdf_file_directory + filename)
+    data = loader.load()
+    texts = text_splitter.split_documents(data)
+
     if should_create_index(filename):
-        loader = UnstructuredFileLoader(pdf_file_directory + filename)
-        data = loader.load()
-        texts = text_splitter.split_documents(data)
-        write_to_file(filename)
-        pinecone.delete_index(index_name)
+        if len(pinecone.list_indexes()) > 0:
+            pinecone.delete_index(index_name)
         pinecone.create_index(index_name, dimension=1536)
-        docsearch = Pinecone.from_texts([t.page_content for t in texts], embeddings, index_name=index_name)
+    docsearch = Pinecone.from_texts([t.page_content for t in texts], embeddings, index_name=index_name)
+    docs = docsearch.similarity_search(message, include_metadata=True, k=2)
+    text = chain.run(input_documents=docs, question=message)
 
-        docs = docsearch.similarity_search(message, include_metadata=True)
-        text = chain.run(input_documents=docs, question=message)
-    else:
-        loader = UnstructuredFileLoader(pdf_file_directory + filename)
-        data = loader.load()
-        texts = text_splitter.split_documents(data)
-        docsearch = Pinecone.from_texts([t.page_content for t in texts], embeddings, index_name=index_name)
+    write_to_file(filename)
+    return jsonify({'text': text})
 
-        docs = docsearch.similarity_search(message, include_metadata=True)
-        text = chain.run(input_documents=docs, question=message)
-    return text
 
 @app.route('/test', methods=['POST'])
 @cross_origin()
@@ -160,6 +149,19 @@ def test():
 
 def create_index(filename):
     pass
+
+
+def convert_bytes_to_pdf_file(bytes_string, output_path):
+    with open(output_path, 'wb') as file:
+        file.write(bytes_string)
+    print("Fișierul PDF a fost creat cu succes.")
+
+
+def write_to_file_texts(texts):
+    f = open(texts_directory + "text1.txt", 'w', encoding="utf-8")
+    for text in texts:
+        f.write(text.page_content + '\n')
+    f.close()
 
 
 if __name__ == '__main__':
