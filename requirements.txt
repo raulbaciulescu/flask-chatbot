@@ -58,3 +58,6 @@ unstructured
 tabulate
 pdf2image
 tiktoken
+ndg-httpsclient
+pyopenssl
+pyasn1

@@ -1,12 +1,13 @@
 import speech_recognition as sr
 
-audio_file_directory = 'D:\\Facultate\\Licenta\\projects\\flask-chatbot\\audios\\'
-pdf_file_directory = 'D:\\Facultate\\Licenta\\projects\\flask-chatbot\\pdf\\'
+audio_directory = 'D:\\Facultate\\Licenta\\projects\\flask-chatbot\\audios\\'
+pdf_directory = 'D:\\Facultate\\Licenta\\projects\\flask-chatbot\\pdf\\'
 pdf_last_filename = 'D:\\Facultate\\Licenta\\projects\\flask-chatbot\\pdf\\last_pdf.txt'
 texts_directory = 'D:\\Facultate\\Licenta\\projects\\flask-chatbot\\texts\\'
 
+
 def recognize(filename):
-    filename = audio_file_directory + filename
+    filename = audio_directory + filename
     r = sr.Recognizer()
     romana = sr.AudioFile(filename)
 
