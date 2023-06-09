@@ -14,7 +14,9 @@ from langchain.memory import ConversationSummaryBufferMemory
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Pinecone
 
-from utils import recognize, audio_directory, pdf_directory, write_to_file, should_create_index
+from utils import recognize, audio_directory, pdf_directory, write_last_pdf_from_pinecone_index, should_create_index, \
+    save_file, get_documents, create_pinecone_index, match_with_documents, \
+    save_messages_in_memory, run_llm_with_documents, predict
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -28,27 +30,10 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 pinecone_key = os.getenv("PINECONE_API_KEY")
 pinecone_key = os.getenv("PINECONE_API_KEY")
 pinecone_api_env = os.getenv("PINECONE_API_ENV")
-
-llm = OpenAI(
-    model_name='text-davinci-003',
-    temperature=0,
-    max_tokens=512
-)
-
-conversation_with_summary = ConversationChain(
-    llm=llm,
-    verbose=True
-)
-
 pinecone.init(
     api_key=pinecone_key,
     environment=pinecone_api_env
 )
-embeddings = OpenAIEmbeddings()
-text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
-index_name = "pinecone-index"
-chain = load_qa_chain(llm, chain_type="stuff")
-
 
 @app.route('/hello')
 @cross_origin()
@@ -58,18 +43,12 @@ def hello_world():
 
 @app.route('/messages', methods=['POST'])
 def create_message():
-    message_list = request.get_json()['messages']
+    messages = request.get_json()['messages']
     message = request.get_json()['message']
-    memory = ConversationSummaryBufferMemory(llm=OpenAI())
-    for elem1, elem2 in zip(message_list[::2], message_list[1::2]):
-        if elem1.get('input') is not None:
-            memory.save_context(elem1, elem2)
-        else:
-            memory.save_context(elem2, elem1)
-        memory.save_context(elem1, elem2)
+    memory = save_messages_in_memory(messages)
+    response = predict(memory, message)
 
-    conversation_with_summary.memory = memory
-    return jsonify({'text': conversation_with_summary.predict(input=message)})
+    return jsonify({'text': response})
 
 
 @app.route('/transcribe', methods=['POST'])
@@ -87,62 +66,33 @@ def transcribe():
 @app.route('/pdf-messages', methods=['POST'])
 @cross_origin()
 def create_pdf_file():
-    start_global = time.perf_counter()
-    start = time.perf_counter()
     if 'file' not in request.files:
         return 'No file found in request!', 400
-
-    # save file
     message = request.form['message']
     file = request.files['file']
-    filename = file.filename
-    file.save(pdf_directory + file.filename)
-    write_to_file(filename)
-    loader = UnstructuredFileLoader(pdf_directory + filename)
-    data = loader.load()
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
-    texts = text_splitter.split_documents(data)
-    finish = time.perf_counter()
-    print(f'Finished in {round(finish - start, 2)} seconds(s), load data')
-    start = time.perf_counter()
-    if len(pinecone.list_indexes()) > 0:
-        pinecone.delete_index(index_name)
-    pinecone.create_index(index_name, dimension=1536)
-    docsearch = Pinecone.from_texts([t.page_content for t in texts], embeddings, index_name=index_name)
-    finish = time.perf_counter()
-    print(f'Finished in {round(finish - start, 2)} seconds(s), delete/create index')
-    start = time.perf_counter()
-    docs = docsearch.similarity_search(message, include_metadata=True)
-    text = chain.run(input_documents=docs, question=message)
-    finish = time.perf_counter()
-    print(f'Finished in {round(finish - start, 2)} seconds(s), similarity and chain run')
-    finish_global = time.perf_counter()
-    print(f'Finished in {round(finish_global - start_global, 2)} seconds(s)')
+    save_file(file)
+    documents = get_documents(file.filename)
+    create_pinecone_index()
+    found_documents = match_with_documents(documents, message)
+    text = run_llm_with_documents(found_documents, message)
+    write_last_pdf_from_pinecone_index(file.filename)
+
     return jsonify({'text': text})
 
 
 @app.route('/pdf-messages/without-pdf', methods=['POST'])
 @cross_origin()
 def create_pdf_message():
-    start_global = time.perf_counter()
-    # save file
     message = request.get_json()['message']
     filename = request.get_json()['filename']
-    loader = UnstructuredFileLoader(pdf_directory + filename)
-    data = loader.load()
-    texts = text_splitter.split_documents(data)
-
+    documents = get_documents(filename)
     if should_create_index(filename):
-        if len(pinecone.list_indexes()) > 0:
-            pinecone.delete_index(index_name)
-        pinecone.create_index(index_name, dimension=1536)
-    docsearch = Pinecone.from_texts([t.page_content for t in texts], embeddings, index_name=index_name)
-    docs = docsearch.similarity_search(message, include_metadata=True, k=4)
-    text = chain.run(input_documents=docs, question=message)
+        create_pinecone_index()
 
-    write_to_file(filename)
-    finish_global = time.perf_counter()
-    print(f'Finished in {round(finish_global - start_global, 2)} seconds(s)')
+    found_documents = match_with_documents(documents, message)
+    text = run_llm_with_documents(found_documents, message)
+    write_last_pdf_from_pinecone_index(filename)
+
     return jsonify({'text': text})
 
 

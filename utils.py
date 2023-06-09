@@ -1,17 +1,26 @@
+import pinecone
 import speech_recognition as sr
+from langchain import OpenAI, ConversationChain
+from langchain.chains.question_answering import load_qa_chain
+from langchain.document_loaders import UnstructuredFileLoader
+from langchain.embeddings import OpenAIEmbeddings
+from langchain.memory import ConversationSummaryBufferMemory
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.vectorstores import Pinecone
 
 audio_directory = 'D:\\Facultate\\Licenta\\projects\\flask-chatbot\\audios\\'
 pdf_directory = 'D:\\Facultate\\Licenta\\projects\\flask-chatbot\\pdf\\'
 pdf_last_filename = 'D:\\Facultate\\Licenta\\projects\\flask-chatbot\\pdf\\last_pdf.txt'
 texts_directory = 'D:\\Facultate\\Licenta\\projects\\flask-chatbot\\texts\\'
+index_name = "pinecone-index"
 
 
 def recognize(filename):
     filename = audio_directory + filename
     r = sr.Recognizer()
-    romana = sr.AudioFile(filename)
+    audio_file = sr.AudioFile(filename)
 
-    with romana as source:
+    with audio_file as source:
         audio = r.record(source)
 
     return {"text": r.recognize_google(audio, language='ro-RO')}
@@ -23,7 +32,67 @@ def should_create_index(filename):
     return filename != filename_from_file
 
 
-def write_to_file(filename):
+def write_last_pdf_from_pinecone_index(filename):
     f = open(pdf_last_filename, 'w')
     f.write(filename)
     f.close()
+
+    # start = time.perf_counter()
+    # finish = time.perf_counter()
+    # print(f'Finished in {round(finish - start, 2)} seconds(s), load data')
+
+
+def save_file(file):
+    filename = file.filename
+    file.save(pdf_directory + file.filename)
+    write_last_pdf_from_pinecone_index(filename)
+
+
+def get_documents(filename):
+    loader = UnstructuredFileLoader(pdf_directory + filename)
+    data = loader.load()
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
+    return text_splitter.split_documents(data)
+
+
+def create_pinecone_index():
+    if len(pinecone.list_indexes()) > 0:
+        pinecone.delete_index(index_name)
+    pinecone.create_index(index_name, dimension=1536)
+
+
+def match_with_documents(texts, message):
+    embeddings = OpenAIEmbeddings()
+    docsearch = Pinecone.from_texts([t.page_content for t in texts], embeddings, index_name=index_name)
+    docs = docsearch.similarity_search(message, include_metadata=True)
+    return docs
+
+
+def save_messages_in_memory(message_list):
+    memory = ConversationSummaryBufferMemory(llm=OpenAI(), max_token_limit=2500)
+    for elem1, elem2 in zip(message_list[::2], message_list[1::2]):
+        if elem1.get('input') is not None:
+            memory.save_context(elem1, elem2)
+        else:
+            memory.save_context(elem2, elem1)
+        memory.save_context(elem1, elem2)
+
+    return memory
+
+
+def run_llm_with_documents(found_documents, message):
+    llm = OpenAI(
+        model_name='text-davinci-003',
+        temperature=0,
+    )
+    chain = load_qa_chain(llm, chain_type="stuff")
+    return chain.run(input_documents=found_documents, question=message)
+
+
+def predict(memory, message):
+    summary_chain = ConversationChain(
+        llm=OpenAI(model="text-davinci-003"),
+        verbose=True
+    )
+    summary_chain.memory = memory
+    return summary_chain.predict(input=message)
