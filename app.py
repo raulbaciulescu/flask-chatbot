@@ -20,9 +20,9 @@ sys.stdout.reconfigure(encoding='utf-8')
 app = Flask(__name__)
 openai.api_key = os.getenv("OPENAI_API_KEY")
 pinecone_key = os.getenv("PINECONE_API_KEY")
-pinecone_key = os.getenv("PINECONE_API_KEY")
 pinecone_api_env = os.getenv("PINECONE_API_ENV")
-#
+run_in_cloud = False
+
 pinecone.init(
     api_key=pinecone_key,
     environment=pinecone_api_env
@@ -52,7 +52,10 @@ def transcribe():
 
     file = request.files['file']
     filename = file.filename
-    file.save(audio_directory + file.filename)
+    if run_in_cloud:
+        upload_blob(audio_directory + file.filename)
+    else:
+        file.save(audio_directory + file.filename)
     return recognize(filename)
 
 
@@ -63,12 +66,13 @@ def create_pdf_file():
         return 'No file found in request!', 400
     message = request.form['message']
     file = request.files['file']
+
     save_file(file)
+
     documents = get_documents(file.filename)
     create_pinecone_index()
     found_documents = match_with_documents(documents, message)
     text = run_llm_with_documents(found_documents, message)
-    write_last_pdf_from_pinecone_index(file.filename)
 
     return jsonify({'text': text})
 
@@ -78,13 +82,14 @@ def create_pdf_file():
 def create_pdf_message():
     message = request.get_json()['message']
     filename = request.get_json()['filename']
+
+    write_last_pdf_from_pinecone_index(filename)
     documents = get_documents(filename)
     if should_create_index(filename):
         create_pinecone_index()
 
     found_documents = match_with_documents(documents, message)
     text = run_llm_with_documents(found_documents, message)
-    write_last_pdf_from_pinecone_index(filename)
 
     return jsonify({'text': text})
 

@@ -7,12 +7,15 @@ from langchain.embeddings import OpenAIEmbeddings
 from langchain.memory import ConversationSummaryBufferMemory
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Pinecone
+from langchain.document_loaders import GCSFileLoader
 
 audio_directory = 'audios\\'
 pdf_directory = 'pdf\\'
 pdf_last_filename = 'pdf\\last_pdf.txt'
 index_name = "pinecone-index"
 
+bucket_name = 'gepeto-bucket'
+project_name = 'brave-drive-388410'
 
 def recognize(filename):
     filename = audio_directory + filename
@@ -42,15 +45,23 @@ def write_last_pdf_from_pinecone_index(filename):
 
 
 def save_file(file):
+    if run_in_cloud:
+        upload_blob(pdf_directory + file.filename)
     filename = file.filename
     file.save(pdf_directory + file.filename)
     write_last_pdf_from_pinecone_index(filename)
 
 
 def get_documents(filename):
-    loader = UnstructuredFileLoader(pdf_directory + filename)
-    data = loader.load()
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
+
+    if run_in_cloud:
+        loader = GCSFileLoader(project_name=project_name, bucket=bucket_name, blob=pdf_directory + filename)
+        data = loader.load()
+    else:
+        loader = UnstructuredFileLoader(pdf_directory + filename)
+        data = loader.load()
+
     return text_splitter.split_documents(data)
 
 
