@@ -1,20 +1,12 @@
 import os
 import sys
-import time
 
 import openai
 import pinecone
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
-from langchain import OpenAI, ConversationChain
-from langchain.chains.question_answering import load_qa_chain
-from langchain.document_loaders import UnstructuredFileLoader
-from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.memory import ConversationSummaryBufferMemory
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.vectorstores import Pinecone
 
-from utils import recognize, audio_directory, pdf_directory, write_last_pdf_from_pinecone_index, should_create_index, \
+from utils import recognize, audio_directory, write_last_pdf_from_pinecone_index, should_create_index, \
     save_file, get_documents, create_pinecone_index, match_with_documents, \
     save_messages_in_memory, run_llm_with_documents, predict
 
@@ -30,6 +22,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 pinecone_key = os.getenv("PINECONE_API_KEY")
 pinecone_key = os.getenv("PINECONE_API_KEY")
 pinecone_api_env = os.getenv("PINECONE_API_ENV")
+#
 pinecone.init(
     api_key=pinecone_key,
     environment=pinecone_api_env

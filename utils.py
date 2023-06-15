@@ -8,10 +8,9 @@ from langchain.memory import ConversationSummaryBufferMemory
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Pinecone
 
-audio_directory = 'D:\\Facultate\\Licenta\\projects\\flask-chatbot\\audios\\'
-pdf_directory = 'D:\\Facultate\\Licenta\\projects\\flask-chatbot\\pdf\\'
-pdf_last_filename = 'D:\\Facultate\\Licenta\\projects\\flask-chatbot\\pdf\\last_pdf.txt'
-texts_directory = 'D:\\Facultate\\Licenta\\projects\\flask-chatbot\\texts\\'
+audio_directory = 'audios\\'
+pdf_directory = 'pdf\\'
+pdf_last_filename = 'pdf\\last_pdf.txt'
 index_name = "pinecone-index"
 
 

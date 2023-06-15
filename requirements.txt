@@ -61,6 +61,7 @@ tiktoken
 ndg-httpsclient
 pyopenssl
 pyasn1
-pinecone
+pinecone-client
 torchvision
 unstructured_inference
+google-cloud-storage

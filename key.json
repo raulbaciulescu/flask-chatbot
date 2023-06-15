@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "brave-drive-388410",
+  "private_key_id": "857ff098e5f4ed8f68c5a14c12e841c4afc99990",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCqx01zXQlvdqu7\nmElMr1dXONifkxGtxz0tF6+HL94HYGm3Ofkrf0VBHJv/R+sdoU9I4GAAknJT8/xP\n7hawHMnNZtIb3mZu/mq4LPCA1aQpxJAaV/327CieAyi9AoIvzd60mJ2MJKJMizfh\na6S3UqfVmOioD6xhhxSvNAzr3F5gCg9OO/8AW0k7qqaJUmldBN842AKos3OAzJHZ\noYMXAB7yWjbEsJJjE9bX1GuFEFx4TIFLfRy/d5rI/I75RG3bPJQ0Kr6i1Am9Q96s\ncm1MaIzCYtc0BTpykhbluHhYirMhehbmXcYCDQxixefTAoUhwBqpopL5cz1RiI0J\nmiOMmc9PAgMBAAECggEADWSG1uK3cDXSvunw6aIgi9cJ6e27J7Elw4kFe2kOFO8D\nK1rRBw+6iyImu6zUq+SwFot+C91wONQ797q4rcP8MW78UDIvP0oVbW8cx0W504q2\nMFKxOHGJt+aQhc4SDpSq/+euB0UCM1WBotxxtOy2+8G7kR51ispwnVLMJp0IC6jt\ndrOPQwQKW9wADw/3QcLV1FJnPM6dKoHvJ6FyP78pwa75++32+2n9DRQAvX05d7P4\nj98Tn04URbck0mgGerIGBHeAh9lzl0gn5DnAgYWATK4sHJX2RhMQrTN1j6YEnHZh\nw2LN5DxcBafDrVyZYh09ThvaHMXCqAyCJz9XPXXcDQKBgQDcI6L501mKC5hVebQ7\nJGKEP5z03mSr0Yo83GhK/Fuwp6LrjKCfag84PhTbQfWsTSISqF6YSeYkI3f2tAHc\nbik8JF835RBaSdRKx9g5Dmuqls3hG/K4x1qVTNRZG8x+OkN1itV/Jadk10iFpkY3\nP6l5bVevO436LWEZGabgJHIJtQKBgQDGmTNI1t6pZpiPOJxL+LkW2aOta/l00bKr\nx8Wj7wmrio+pULiPtPQoskCUy5YSBkjHQe6zKYw0Ylpak/fImtngkTnhk+ZU1ZmC\nY/wrXL7Nye4h0IqBqsBsF0DH8HrAJhlnw3VJBpLrT6DhtS1WJBsXhIJ3hdDE1PKR\ntgvLpd2HcwKBgD43LCZjHxkusbzmipN0cwthVyC1gco1jFYrDKa0r807c4YS1op3\nVRnWIdrdx2sM2aZgQ2vS5uIrzAnDUgtUbv76YJbRfE+oMgF4fZmSg8dQm5sVZQHo\nBafQcOtGOgMqwEoGFNS8dZTAa1Sqa4nNyj3xMyjpMfUUwi5v24PZiQlJAoGAQpRL\nuCio3xvRG3q8E1AgJQPztokTSVGf160SmkHh+Qtr3DR+m1br39Tah8e02PgYYAy/\njHrqUQmEBwfCMxOO5ZVqVTCzME+ntin0+UiPgwgmeFmkhZIMDnDBPAZn8JEVRU8m\nu8Ojb5Xzdpe5yj4ygvDemFlZQxOs+qKQU8aYfPcCgYAdqbD1YBdduZkjMUNiqkna\n2payctBxSonv42gF7OI4B6eWq5Zxd9a1wdUBReurIcmSZMRH2cU+IZBiqeBs5wLn\npLLWflwAydFRph/74Lr9PJfcKIueJk4nFZoCXMxcIUi2ruBET+SVet4Ph7q7mUOG\nUSg2pJi+0fnxYix2vXxVSQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "gepeto-service-account@brave-drive-388410.iam.gserviceaccount.com",
+  "client_id": "106248406259636906678",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/gepeto-service-account%40brave-drive-388410.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
