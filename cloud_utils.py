@@ -1,7 +1,7 @@
 from google.cloud import storage
 
-bucket_name = 'gepeto1'
-project_name = 'brave-drive-388410'
+bucket_name = 'gepeto-bucket'
+project_name = 'neural-sol-391812'
 
 
 def upload_blob(path):

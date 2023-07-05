@@ -9,16 +9,14 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Pinecone
 from langchain.document_loaders import GCSFileLoader
 
-from cloud_utils import upload_blob
+from cloud_utils import upload_blob, project_name, bucket_name
 
 audio_directory = 'audios\\'
 # pdf_directory = 'pdf\\'
 pdf_directory = 'pdf/'
 pdf_last_filename = 'pdf\\last_pdf.txt'
 index_name = "pinecone-index"
-bucket_name = 'gepeto1'
-project_name = 'brave-drive-388410'
-run_in_cloud = False
+run_in_cloud = True
 
 
 def recognize(filename):

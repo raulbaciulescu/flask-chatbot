@@ -19,9 +19,13 @@ sys.stdin.reconfigure(encoding='utf-8')
 sys.stdout.reconfigure(encoding='utf-8')
 
 app = Flask(__name__)
-openai.api_key = os.getenv("OPENAI_API_KEY")
-pinecone_key = os.getenv("PINECONE_API_KEY")
-pinecone_api_env = os.getenv("PINECONE_API_ENV")
+# openai.api_key = os.getenv("OPENAI_API_KEY")
+# pinecone_key = os.getenv("PINECONE_API_KEY")
+# pinecone_api_env = os.getenv("PINECONE_API_ENV")
+openai.api_key = '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'
+pinecone_key = 'cafdd21d-bbed-4ef3-b7cc-3bfd67f60126'
+pinecone_api_env = 'us-east4-gcp'
+
 
 pinecone.init(
     api_key=pinecone_key,
@@ -52,10 +56,7 @@ def transcribe():
 
     file = request.files['file']
     filename = file.filename
-    if run_in_cloud:
-        upload_blob(audio_directory + file.filename)
-    else:
-        file.save(audio_directory + file.filename)
+    file.save(audio_directory + file.filename)
     return recognize(filename)
 
 
